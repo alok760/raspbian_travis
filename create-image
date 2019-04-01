@@ -44,15 +44,19 @@ trap cleanup EXIT
 [ ! -f "${rpi_tar}" ] && wget "${rpi_url}"
 
 # Create, partition and format the image
-fallocate -l "${size}" "${image}"
+
+wget http://director.downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2018-11-15/2018-11-13-raspbian-stretch-lite.zip
+unzip 2018-11-13-raspbian-stretch-lite.zip
+mv 2018-11-13-raspbian-stretch-lite.img raspbian.img
+#fallocate -l "${size}" "${image}"
 loopdev=$(losetup --find --show "${image}")
-parted --script "${loopdev}" mklabel msdos
-parted --script "${loopdev}" mkpart primary fat32 0% 100M
-parted --script "${loopdev}" mkpart primary ext4 100M 100%
+#parted --script "${loopdev}" mklabel msdos
+#parted --script "${loopdev}" mkpart primary fat32 0% 100M
+#parted --script "${loopdev}" mkpart primary ext4 100M 100%
 bootdev=$(ls "${loopdev}"*1)
 rootdev=$(ls "${loopdev}"*2)
-mkfs.vfat -F32 ${bootdev}
-mkfs.ext4 -F ${rootdev}
+#mkfs.vfat -F32 ${bootdev}
+#mkfs.ext4 -F ${rootdev}
 
 # Mount the image
 [ ! -d "${mount}" ] && mkdir "${mount}"
@@ -61,7 +65,7 @@ mount "${rootdev}" "${mount}"
 mount "${bootdev}" "${mount}/boot"
 
 # Install archlinuxarm to the image
-tar -xpf "${rpi_tar}" -C ${mount} 2> >(grep -v "Ignoring unknown extended header keyword")
+#tar -xpf "${rpi_tar}" -C ${mount} 2> >(grep -v "Ignoring unknown extended header keyword")
 
 # Copy our installation script to the mount so it can be run in the chroot
 install -Dm755 "${script}" "${mount}/tmp/${script}"
