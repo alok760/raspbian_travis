@@ -13,14 +13,7 @@ fi
 # Some useful constants
 mount="mnt" # Local directory to mount the image (automatically created/delete as needed)
 script="setup" # Local setup script to run inside the image
-rpi_tar="ArchLinuxARM-rpi-latest.tar.gz" # Raspberry pi 1 image others can be found on https://archlinuxarm.org/
-rpi_url="http://archlinuxarm.org/os/${rpi_tar}"
 
-# Grab the first two arguments, using the defaults if not set
-# This allows running the command as any of
-#   ./create-image                 # to use the defaults
-#   ./create-image 4G              # create a 4 gig image instead of 2 gig
-#   ./create-image 4G myname.img   # create a 4 gig image called myname.img
 size="${1:-2G}"
 image="${2:-raspbian.img}"
 
@@ -40,23 +33,18 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# Download archlinux arm only if we have not already done so
-#[ ! -f "${rpi_tar}" ] && wget "${rpi_url}"
-
-# Create, partition and format the image
 
 wget http://director.downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2018-11-15/2018-11-13-raspbian-stretch-lite.zip
 unzip 2018-11-13-raspbian-stretch-lite.zip
 mv 2018-11-13-raspbian-stretch-lite.img raspbian.img
+ls
+losetup --find --show "${image}"
 #fallocate -l "${size}" "${image}"
 loopdev=$(losetup --find --show "${image}")
-#parted --script "${loopdev}" mklabel msdos
-#parted --script "${loopdev}" mkpart primary fat32 0% 100M
-#parted --script "${loopdev}" mkpart primary ext4 100M 100%
-bootdev=$(ls "${loopdev}"*1)
-rootdev=$(ls "${loopdev}"*2)
-#mkfs.vfat -F32 ${bootdev}
-#mkfs.ext4 -F ${rootdev}
+
+bootdev=/dev/loop0p2
+rootdev=/dev/loop0p2
+
 
 # Mount the image
 [ ! -d "${mount}" ] && mkdir "${mount}"
