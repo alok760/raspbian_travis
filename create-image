@@ -41,7 +41,7 @@ cleanup() {
 trap cleanup EXIT
 
 # Download archlinux arm only if we have not already done so
-[ ! -f "${rpi_tar}" ] && wget "${rpi_url}"
+#[ ! -f "${rpi_tar}" ] && wget "${rpi_url}"
 
 # Create, partition and format the image
 
