@@ -38,11 +38,12 @@ wget http://director.downloads.raspberrypi.org/raspbian_lite/images/raspbian_lit
 unzip 2018-11-13-raspbian-stretch-lite.zip
 mv 2018-11-13-raspbian-stretch-lite.img raspbian.img
 ls
+sudo kpartx -v -a raspbian.img
 losetup --find --show "${image}"
 #fallocate -l "${size}" "${image}"
 loopdev=$(losetup --find --show "${image}")
 lsblk
-bootdev=/dev/loop0p2
+bootdev=/dev/loop0p1
 rootdev=/dev/loop0p2
 
 
