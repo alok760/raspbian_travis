@@ -3,3 +3,7 @@ set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 IFS=$'\n\t'
 uname -r
+ls
+sudo apt update
+sudo apt install tmux -y
+sudo apt install zsh -y
