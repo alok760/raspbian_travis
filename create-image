@@ -53,7 +53,7 @@ rootdev=/dev/loop0p1
 mount "${rootdev}" "${mount}"
 [ ! -d "${mount}/boot" ] && mkdir "${mount}/boot"
 mount "${bootdev}" "${mount}/boot"
-
+ls ${mount}
 # Install archlinuxarm to the image
 #tar -xpf "${rpi_tar}" -C ${mount} 2> >(grep -v "Ignoring unknown extended header keyword")
 
