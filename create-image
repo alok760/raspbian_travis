@@ -41,7 +41,7 @@ ls
 sudo kpartx -v -a raspbian.img
 losetup --find --show "${image}"
 #fallocate -l "${size}" "${image}"
-loopdev=$(losetup --find --show "${image}")
+#loopdev=$(losetup --find --show "${image}")
 lsblk
 bootdev=/dev/loop0p1
 rootdev=/dev/loop0p2
