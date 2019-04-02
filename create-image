@@ -44,8 +44,8 @@ losetup -fP --show raspbian.img
 #fallocate -l "${size}" "${image}"
 #loopdev=$(losetup --find --show "${image}")
 lsblk
-bootdev=/dev/loop0p2
-rootdev=/dev/loop0p1
+bootdev=/dev/loop0p1
+rootdev=/dev/loop0p2
 
 
 # Mount the image
