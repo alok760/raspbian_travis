@@ -18,9 +18,9 @@ cleanup() {
 trap cleanup EXIT
 
 
-wget http://director.downloads.raspberrypi.org/raspbian/images/raspbian-2018-11-15/2018-11-13-raspbian-stretch.zip
-unzip 2018-11-13-raspbian-stretch.zip
-mv 2018-11-13-raspbian-stretch.img raspbian.img
+wget http://director.downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2018-11-15/2018-11-13-raspbian-stretch-lite.zip
+unzip 2018-11-13-raspbian-stretch-lite.zip
+mv 2018-11-13-raspbian-stretch-lite.img raspbian.img
 ls
 
 
