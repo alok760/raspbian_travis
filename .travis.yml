@@ -10,7 +10,6 @@ addons:
     - wget
     - dosfstools
     - zip
-    - kpartx
 script:
 - sudo bash ./create-image
 - zip raspbian.img.zip raspbian.img
