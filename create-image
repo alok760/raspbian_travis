@@ -23,7 +23,7 @@ unzip 2018-11-13-raspbian-stretch.zip
 mv 2018-11-13-raspbian-stretch.img raspbian.img
 ls
 
-qemu-img raspbian.img 4G
+qemu-img resize raspbian.img 4G
 echo ", +" | sfdisk -N 2 2015-11-12-jessie-minibian.img
 
 loopdev=$(losetup -fP --show raspbian.img)
@@ -39,8 +39,8 @@ mount "${rootdev}" "${mount}"
 mount "${bootdev}" "${mount}/boot"
 ls ${mount}
 
-e2fsck -f /dev/loop1p2
-resize2fs /dev/loop1p2
+e2fsck -f /dev/loop0p2
+resize2fs /dev/loop0p2
 
 install -Dm755 "${script}" "${mount}/tmp/${script}"
 
