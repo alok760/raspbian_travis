@@ -23,7 +23,7 @@ unzip 2018-11-13-raspbian-stretch.zip
 mv 2018-11-13-raspbian-stretch.img raspbian.img
 ls
 
-qemu-img resize raspbian.img 4G
+qemu-img resize raspbian.img 6G
 echo ", +" | sfdisk -N 2 raspbian.img
 
 loopdev=$(losetup -fP --show raspbian.img)
