@@ -21,3 +21,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: alok760/raspbian_travis
+    tags: true
