@@ -24,7 +24,7 @@ mv 2018-11-13-raspbian-stretch.img raspbian.img
 ls
 
 qemu-img resize raspbian.img 4G
-echo ", +" | sfdisk -N 2 2015-11-12-jessie-minibian.img
+echo ", +" | sfdisk -N 2 raspbian.img
 
 loopdev=$(losetup -fP --show raspbian.img)
 lsblk
