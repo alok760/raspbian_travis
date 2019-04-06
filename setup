@@ -23,7 +23,7 @@ systemctl stop seeed-voicecard
 systemctl stop systemd-udevd
 sleep 5
 
-lsof +c0 /dev
-on_chroot << EOF
-systemcl stop systemd-udevd
-EOF
+#lsof +c0 /dev
+#on_chroot << EOF
+#systemcl stop systemd-udevd
+#EOF
