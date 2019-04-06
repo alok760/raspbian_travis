@@ -31,6 +31,9 @@ lsblk
 bootdev=/dev/loop0p1
 rootdev=/dev/loop0p2
 
+e2fsck -f /dev/loop0p2
+resize2fs /dev/loop0p2
+
 
 # Mount the image
 [ ! -d "${mount}" ] && mkdir "${mount}"
@@ -39,8 +42,6 @@ mount "${rootdev}" "${mount}"
 mount "${bootdev}" "${mount}/boot"
 ls ${mount}
 
-e2fsck -f /dev/loop0p2
-resize2fs /dev/loop0p2
 
 install -Dm755 "${script}" "${mount}/tmp/${script}"
 
