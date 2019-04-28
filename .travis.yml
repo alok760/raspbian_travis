@@ -12,7 +12,6 @@ addons:
     - zip
 script:
 - sudo bash ./create-image
-- xz -z raspbian.img -c > raspbian.img.xz
 - zip raspbian.img.zip raspbian.img
 deploy:
   provider: releases
