@@ -1,5 +1,5 @@
 #!/bin/bash
-
+/usr/bin/qemu-system-x86_64 --version
 mount="mnt" # Local directory to mount the image (automatically created/delete as needed)
 script="setup" # Local setup script to run inside the image
 
