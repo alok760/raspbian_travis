@@ -4,6 +4,7 @@ trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 IFS=$'\n\t'
 uname -r
 ls
+mkdir /etc/systemd/system/systemd-udevd.service.d/
 sudo echo -e "[Service]\nMountFlags=shared" > /etc/systemd/system/systemd-udevd.service.d/myoverride.conf
 cat /etc/systemd/system/systemd-udevd.service.d/myoverride.conf
 apt-get update
